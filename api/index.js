@@ -1,13 +1,13 @@
-export default function handler(req, res) {
-  // Example: read environment variables
-  const env = process.env.APP_ENV;
-  const debug = process.env.APP_DEBUG === "true";
+<?php
+// Example: read environment variables
+$env = getenv('APP_ENV');
+$debug = getenv('APP_DEBUG') === 'true';
 
-  // Example response
-  res.status(200).json({
-    message: "Hello from Node.js 20 on Vercel!",
-    environment: env,
-    debugMode: debug,
-    url: process.env.APP_URL
-  });
-}
+// Example response
+header('Content-Type: application/json');
+echo json_encode([
+    'message' => 'Hello from PHP on Vercel!',
+    'environment' => $env,
+    'debugMode' => $debug,
+    'url' => getenv('APP_URL')
+]);
